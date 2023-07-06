@@ -1,0 +1,40 @@
+{
+  "name": "hiring-john-wroge-flashcards",
+  "version": "1.0.0",
+  "description": "Take home assignment for Shortform hiring team.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server .",
+    "build": "webpack ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnwroge/hiring-john-wroge-flashcards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnwroge/hiring-john-wroge-flashcards/issues"
+  },
+  "homepage": "https://github.com/johnwroge/hiring-john-wroge-flashcards#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.22.6",
+    "@babel/core": "^7.22.8",
+    "@babel/preset-env": "^7.22.7",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
