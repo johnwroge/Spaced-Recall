@@ -3,7 +3,27 @@ import Card from './Card';
 import CreateCard from './CreateCard';
 import { v4 as uuidv4 } from 'uuid';
 
+
 export default function UserDisplay() {
+
+
+  const fetchCards = async() => {
+
+    const apiRes = await fetch(`http://localhost:3000/user/cards`);
+
+    if (!apiRes.ok){
+        throw new Error(`fetch not ok`)
+    }
+
+     apiRes.json()
+     .then(result => 
+      console.log(result))
+      .catch(err => 
+        console.log(err));
+}
+
+fetchCards()
+
 
   //array holding times[i] where i corresponds to bin and times[i] is the wait time
   const binTimes = [0, 5, 25, 120, 600, 3600, 18000, 86400, 432000, 2160000, 10540800, Infinity];

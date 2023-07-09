@@ -14,6 +14,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public')
 },
+  proxy: {
+  '/': 'http://localhost:3000/',
+    },
     open: true,
     hot: true,
     liveReload: true,

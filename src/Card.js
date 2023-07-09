@@ -22,17 +22,23 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
   
   return (
     <div className="card">
-      <p>title: {title}</p>
-      {value && <p>definition: {definition}</p>}
-      <p>bin: {bin}</p>
+      <h3>Word: {title}</h3>
+      {value && <h3>Definition: {definition}</h3>}
+      <h4>Bin: {bin}</h4>
 
-      <p>Remaining Time: {time}</p>
-      <p>Incorrect Times: {incorrectTimes}</p>
-      
+      <h4>Remaining Time: {time}</h4>
+      <h4>Incorrect Times: {incorrectTimes}</h4>
+      {
+        !value && (
       <button onClick={showMeAnswer}>Show Definition</button>
-      <button onClick={handleCorrect}>I got it</button>
-      <button onClick={updateIncorrect}>I did not get it</button>
-
+        )
+      }
+      {value && (
+        <>
+          <button onClick={handleCorrect}>I got it</button>
+          <button onClick={updateIncorrect}>I did not get it</button>
+        </>
+      )}
     </div>
   );
 }

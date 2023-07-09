@@ -1,24 +1,19 @@
 
 const mongoose = require('mongoose');
-require('dotenv').config();
 
-const myURI = process.env.MONGO_URI; 
+ 
+const CardSchema = new mongoose.Schema({
+  //stretch feature
+  // user_id: { type: String, required: false },
 
-
-mongoose.connect(myURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: 'Items'
-}).then(() => console.log('connected to Mongo DB'))
-  .catch(err => console.log(err));
-
-
-const ItemSchema = new mongoose.Schema({
-  description: {type: String, required: true},
-  price: {type: Number, required: true},
-  purchased: {type: Boolean, required: true, default: false}
+  title: {type: String, required: true},
+  definition: {type: String, required: true},
+  bin: {type: Number, required: true, default: 0},
+  timeRemaining: {type: Number, required: true},
+  timeStamp: {type: Number, required: true}, 
+  incorrectTimes: {type: Number, required: true, default: 0},
 });
 
-const Items = mongoose.model('Items', ItemSchema);
+const Cards = mongoose.model('Cards', CardSchema);
 
-module.exports = Items; // <-- export your model
+module.exports = Cards;
