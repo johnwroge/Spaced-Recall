@@ -6,8 +6,10 @@ import UserDisplay from "./UserDisplay";
 const App = () => {
   return (
     <Router>
-      <div>
-        <h1>Spaced Repetition Flashcard Application</h1>
+      <div className = "App">
+        <h1>
+          Spaced Repetition Flashcard Application
+          </h1>
         <Routes> 
             <Route exact path="/" element={<UserDisplay />} />
         </Routes>

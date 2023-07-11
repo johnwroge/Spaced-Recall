@@ -4,16 +4,23 @@ import React, { useState } from 'react'
 
 export default function Card({ id, title, definition, bin, timeRemaining, incorrectTimes, handleClick, updateBin }) {
   const [value, setValue] = useState(false);
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
+
+
+
 
   const showMeAnswer = () => {
     setValue(!value);
   };
 
   const updateIncorrect = () => {
+    setButtonsDisabled(true);
     handleClick(id);
+
   };
 
   const handleCorrect = () => {
+    setButtonsDisabled(true);
     updateBin(id);
   };
 
@@ -26,7 +33,7 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
       {value && <h3>Definition: {definition}</h3>}
       <h4>Bin: {bin}</h4>
 
-      <h4>Remaining Time: {time}</h4>
+      <h4>Remaining Time: {timeRemaining}</h4>
       <h4>Incorrect Times: {incorrectTimes}</h4>
       {
         !value && (
@@ -35,8 +42,8 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
       }
       {value && (
         <>
-          <button onClick={handleCorrect}>I got it</button>
-          <button onClick={updateIncorrect}>I did not get it</button>
+          <button disabled={buttonsDisabled} onClick={handleCorrect}>I got it</button>
+          <button disabled={buttonsDisabled} onClick={updateIncorrect}>I did not get it</button>
         </>
       )}
     </div>

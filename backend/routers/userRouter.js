@@ -11,8 +11,8 @@ userRouter.post('/cards', userController.createCard, (req, res) => {
     res.status(200).json(res.locals.response);
   });
   
-userRouter.patch('/cards/:id', userController.updateCard, (req, res) => {
-res.status(200).json(res.locals.message);
+userRouter.patch('/cards', userController.updateCard, (req, res) => {
+  res.status(200).json(res.locals.message);
 });
   
 

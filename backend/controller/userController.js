@@ -42,31 +42,40 @@ userController.getCards = (req, res, next) => {
 
 
   userController.updateCard = (req, res, next) => {
-    console.log('in update cards');
-    const { user_id, _id, timeRemaining, timeStamp, incorrectTimes, bin } = req.body;
+    /*  console.log(req.body.sender, req.body.title, req.body.timeRemaining)*/
   
-    Cards.findByIdAndUpdate(
-        _id,
-      { 
-        bin: bin, 
-        timeRemaining: timeRemaining, 
-        timeStamp: timeStamp, 
-        incorrectTimes: incorrectTimes 
-      }
-    )
+    const { user_id, _id, timeRemaining, timeStamp, incorrectTimes, bin } = req.body;
+    const updateObject = {};
+
+    if (typeof bin !== 'undefined') {
+      updateObject.bin = bin;
+    }
+    if (timeRemaining !== 'undefined') {
+      updateObject.timeRemaining = timeRemaining;
+    }
+    if (typeof timeStamp !== 'undefined') {
+      updateObject.timeStamp = timeStamp;
+    }
+    if (typeof incorrectTimes !== 'undefined') {
+      updateObject.incorrectTimes = incorrectTimes;
+    }
+
+    Cards.findByIdAndUpdate(_id, updateObject)
       .then((item) => {
         res.locals.message = item;
-        console.log(item)
         return next();
       })
       .catch((err) => {
         return next(err);
       });
   };
+
+  
+  userController.updateTimes = (req, res, next) => {
+
+  }
   
 
   module.exports = userController; 
 
-  /*
-   user_id: user_id, 
-  */
+  
