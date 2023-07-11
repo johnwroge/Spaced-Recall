@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: 'backend/server.js',
+  entry: './backend/server.js',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, './dist'),
