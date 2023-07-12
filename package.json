@@ -2,15 +2,12 @@
   "name": "hiring-john-wroge-flashcards",
   "version": "1.0.0",
   "description": "Take home assignment for Shortform hiring team.",
-  "main": "backend/server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devServer": "webpack-dev-server .",
-    "start": "node backend/server.js",
-    "start-all": "npm run build && node backend/server.js",
+    "start": "webpack-dev-server .",
     "dev": "webpack --mode development && node backend/server.js",
-    "build": "webpack --mode production",
-    "heroku-postbuild": "npm run build"  
+    "build": "webpack ."
   },
   "repository": {
     "type": "git",
