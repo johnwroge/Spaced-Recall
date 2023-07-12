@@ -8,6 +8,7 @@
     "start": "node backend/server.js",
     "dev": "webpack --mode development && node backend/server.js",
     "build": "webpack --mode production",
+    "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
