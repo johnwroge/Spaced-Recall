@@ -51,5 +51,7 @@ to run webpack/server run:
 'npm run build' 
 'node server.js'
 
+./node_modules/.bin/webpack --mode production
 
-
+ "heroku-prebuild": "npm ci",
+"heroku-postbuild": "npm run build"
