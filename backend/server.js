@@ -9,8 +9,12 @@ const userRouter = require('./routers/userRouter.js')
  //const adminRouter = require('./routers/adminRouter.js')
 
 
-const distPath = '/Users/johnwroge/hiring-john-wroge-flashcards/dist';
+// const distPath = '/Users/johnwroge/hiring-john-wroge-flashcards/dist';
+// app.use(express.static(distPath));
+
+const distPath = path.join(__dirname, '..', 'dist');
 app.use(express.static(distPath));
+console.log(distPath)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
