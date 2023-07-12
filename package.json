@@ -8,7 +8,6 @@
     "start": "node backend/server.js",
     "dev": "webpack --mode development && node backend/server.js",
     "build": "webpack --mode production"
-   
   },
   "repository": {
     "type": "git",
