@@ -135,7 +135,7 @@ export default function UserDisplay() {
       body: JSON.stringify({
         _id: id,
         incorrectTimes: incorrect,
-        bin: newBin,
+        bin: nextBin,
         timeStamp: timeStamp,
         timeRemaining: timeRemaining
       }),
