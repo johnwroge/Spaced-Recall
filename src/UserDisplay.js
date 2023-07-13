@@ -125,7 +125,7 @@ export default function UserDisplay() {
     const nextBin = incorrectTimes + 1 > 9 ? -1 : 1; 
     
     var timeRemaining =  nextBin >= 0 ? binTimes[nextBin] : Infinity; 
-    incorrectTimes += 1; 
+    const incorrect = incorrectTimes + 1;  
 
     fetch(`/user/cards`, {
       method: 'PATCH',
@@ -134,7 +134,7 @@ export default function UserDisplay() {
       },
       body: JSON.stringify({
         _id: id,
-        incorrectTimes: incorrectTimes,
+        incorrectTimes: incorrect,
         bin: newBin,
         timeStamp: timeStamp,
         timeRemaining: timeRemaining
