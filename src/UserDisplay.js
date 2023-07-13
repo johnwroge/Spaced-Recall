@@ -32,7 +32,7 @@ export default function UserDisplay() {
 
   useEffect(() => {
     const fetchCards = () => {
-      fetch('http://localhost:3000/user/cards')
+      fetch('/user/cards')
         .then(res => res.json())
         .then(data => setCards(data))
         .catch(err => console.error(err));
@@ -73,7 +73,7 @@ export default function UserDisplay() {
       timeStamp: Math.floor(Date.now() / 1000), 
     };
     
-      fetch('http://localhost:3000/user/cards', {
+      fetch('/user/cards', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ export default function UserDisplay() {
 
 
     const timeStamp = Math.floor(Date.now() / 1000);
-    fetch(`http://localhost:3000/user/cards`, {
+    fetch(`/user/cards`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ export default function UserDisplay() {
     console.log("CLICKED UPDATE CORRECT BIN")
     // console.log('Time remaining in update bin',card.timeRemaining)
   
-    fetch(`http://localhost:3000/user/cards`, {
+    fetch(`/user/cards`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ useEffect(() => {
       const timeRemaining = binTimes[card.bin] - timeElapsed;
      if (timeRemaining !== card.timeRemaining) {
        
-        fetch(`http://localhost:3000/user/cards`, {
+        fetch(`/user/cards`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
