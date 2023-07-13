@@ -97,27 +97,36 @@ export default function UserDisplay() {
   /* Updating Incorrect Count On Selected Flashcard */
 
   const updateIncorrectCount = (id) => {
-    console.log("CLICKED UPDATE INCORRECT BIN")
-    const cardToUpdate = cards.find((card) => card._id === id);
-    if (!cardToUpdate) {
-      console.error(`Card with id ${id} not found.`);
-      return;
-    }
-    var newBin; 
-    let timeRemaining;
-    const updatedIncorrectTimes = cardToUpdate.incorrectTimes + 1;
-    const shouldMoveToHardBin = updatedIncorrectTimes > 9;
-    if (shouldMoveToHardBin) {
-      setHardBin((prev) => [...prev, cardToUpdate]);
-      timeRemaining = Infinity
-      newBin = -1
-    } else {
-      timeRemaining = 5;
-      newBin = 1
-    }
+    // console.log("CLICKED UPDATE INCORRECT BIN")
+    // const cardToUpdate = cards.find((card) => card._id === id);
+    // if (!cardToUpdate) {
+    //   console.error(`Card with id ${id} not found.`);
+    //   return;
+    // }
+    // var newBin; 
+    // let timeRemaining;
+    // const updatedIncorrectTimes = cardToUpdate.incorrectTimes + 1;
+    // const shouldMoveToHardBin = updatedIncorrectTimes > 9;
+    // if (shouldMoveToHardBin) {
+    //   setHardBin((prev) => [...prev, cardToUpdate]);
+    //   timeRemaining = Infinity
+    //   newBin = -1
+    // } else {
+    //   timeRemaining = 5;
+    //   newBin = 1
+    // } const timeStamp = Math.floor(Date.now() / 1000);
 
+
+    console.log("CLICKED INCORRECT BIN")
+    const card = cards.find((card) => card._id === id);
+    const [ incorrectTimes ] = card;
 
     const timeStamp = Math.floor(Date.now() / 1000);
+    const nextBin = incorrectTimes + 1 > 9 ? -1 : 1; 
+    
+    var timeRemaining =  nextBin >= 0 ? binTimes[nextBin] : Infinity; 
+    incorrectTimes += 1; 
+
     fetch(`/user/cards`, {
       method: 'PATCH',
       headers: {
@@ -125,7 +134,7 @@ export default function UserDisplay() {
       },
       body: JSON.stringify({
         _id: id,
-        incorrectTimes: updatedIncorrectTimes,
+        incorrectTimes: incorrectTimes,
         bin: newBin,
         timeStamp: timeStamp,
         timeRemaining: timeRemaining
