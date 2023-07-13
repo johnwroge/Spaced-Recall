@@ -119,7 +119,7 @@ export default function UserDisplay() {
 
     console.log("CLICKED INCORRECT BIN")
     const card = cards.find((card) => card._id === id);
-    const [ incorrectTimes ] = card;
+    const { incorrectTimes } = card;
 
     const timeStamp = Math.floor(Date.now() / 1000);
     const nextBin = incorrectTimes + 1 > 9 ? -1 : 1; 
