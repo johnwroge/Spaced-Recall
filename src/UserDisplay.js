@@ -1,6 +1,5 @@
 /* User dashboard parent component holding flashcard logic. All fetch requests 
-are located in this file. Moving to separate files would improve testability. 
-*/
+are located in this file. Moving to separate files will improve testability. */
 
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
@@ -237,6 +236,7 @@ useEffect(() => {
      display = ""
   }
 
+  /* Conditional message to display all messages */
   let cardDisplay;
   if (!showCard){
     cardDisplay = 'Disabled'

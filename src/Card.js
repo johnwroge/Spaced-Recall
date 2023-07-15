@@ -1,9 +1,12 @@
+/* Card component holding title, definition, bin, time remaining, and incorrect times */
+
+
 import React, { useState } from 'react'
 
-
-
 export default function Card({ id, title, definition, bin, timeRemaining, incorrectTimes, handleClick, updateBin }) {
+  /* Show definition state*/
   const [value, setValue] = useState(false);
+  /* Disable button after clicking (instead of debounce or throttle)*/
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
 
