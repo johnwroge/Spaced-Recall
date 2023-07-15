@@ -1,4 +1,4 @@
-// Database file to set up the database connection
+/* Database file to set up the database connection */
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");

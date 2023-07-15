@@ -1,7 +1,9 @@
+/* Main server file serving static files and user router for create and update functionality*/
+
 const express = require('express');
 const path = require('path');
 const app = express();
-// const port = 3000;
+// Heroku creates env port on deployment, otherwise use 3000 in development
 const port = process.env.PORT || 3000;
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
@@ -37,12 +39,13 @@ app.use((err, req, res, next) => {
 });
 
 
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
 
-// Start the server
+// Start the server and display port
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

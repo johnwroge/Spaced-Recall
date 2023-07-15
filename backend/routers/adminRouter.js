@@ -1,3 +1,6 @@
+/*Router to get, update, replace, and delete cards for admin */
+
+
 // const express = require('express');
 // const adminController = require('../controllers/adminController.js');
 // const adminRouter = express.Router();
