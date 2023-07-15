@@ -46,12 +46,7 @@ Study Interface - User Interaction:
 [x] Status messages may also be shown as defined above
 [x] UI can be simple and utilitarian. 
 
-Notes: 
-to run webpack/server run: 
-'npm run build' 
-'node server.js'
+Notes For Development:  
+'npm run dev' 
 
-./node_modules/.bin/webpack --mode production
 
- "heroku-prebuild": "npm ci",
-"heroku-postbuild": "npm run build"

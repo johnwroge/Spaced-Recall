@@ -8,23 +8,25 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
 
 
 
-
+  //Logic to show definition or not
   const showMeAnswer = () => {
     setValue(!value);
   };
 
+  //Invokes the update incorrect bin function in UserDisplay.
   const updateIncorrect = () => {
     setButtonsDisabled(true);
     handleClick(id);
 
   };
 
+  //Invokes the update bin function in UserDisplay
   const handleCorrect = () => {
     setButtonsDisabled(true);
     updateBin(id);
   };
 
-  //changing time to 0 if it's negative (personal preference)
+  //Changes remaining time to 0 if it's negative 
   const time = timeRemaining < 0 ? 0: timeRemaining;
   
   return (
@@ -33,7 +35,7 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
       {value && <h3>Definition: {definition}</h3>}
       <h4>Bin: {bin}</h4>
 
-      <h4>Remaining Time: {timeRemaining}</h4>
+      <h4>Remaining Time: {time}</h4>
       <h4>Incorrect Times: {incorrectTimes}</h4>
       {
         !value && (

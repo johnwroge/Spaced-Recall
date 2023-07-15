@@ -62,7 +62,7 @@ userController.getCards = (req, res, next) => {
 
     Cards.findByIdAndUpdate(_id, updateObject)
       .then((item) => {
-        res.locals.message = item;
+        //res.locals.message = item;
         return next();
       })
       .catch((err) => {

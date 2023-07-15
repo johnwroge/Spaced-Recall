@@ -17,6 +17,8 @@ export default function UserDisplay() {
   /* Hard bin for items with 10 incorrect attempts */
   const [hardBin, setHardBin] = useState([])
 
+  const [showCard, setShowCard] = useState(false);
+
   /* State For Create Card Form */
   const [formData, setFormData] = useState({
     title: '',
@@ -27,6 +29,13 @@ export default function UserDisplay() {
     known: false,
   });
 
+
+  /* Logic allowing user to display all cards and time remaining  */
+  const handleDisplayCards = () => {
+    setShowCard(prev => !prev)
+  }
+  
+
   
   /* Retrieve Updated Cards Every Second From Database */
 
@@ -35,7 +44,7 @@ export default function UserDisplay() {
       fetch('/user/cards')
         .then(res => res.json())
         .then(data => setCards(data))
-        .catch(err => console.error(err));
+        .catch(err => console.error('Error in fetch cards: ', err));
     };
   
     const timer = setInterval(fetchCards, 1000);
@@ -44,7 +53,10 @@ export default function UserDisplay() {
       clearInterval(timer);
     };
   }, []);
+
   
+  
+   
 
 
   /* Update form input values per user interaction */
@@ -97,27 +109,8 @@ export default function UserDisplay() {
   /* Updating Incorrect Count On Selected Flashcard */
 
   const updateIncorrectCount = (id) => {
-    // console.log("CLICKED UPDATE INCORRECT BIN")
-    // const cardToUpdate = cards.find((card) => card._id === id);
-    // if (!cardToUpdate) {
-    //   console.error(`Card with id ${id} not found.`);
-    //   return;
-    // }
-    // var newBin; 
-    // let timeRemaining;
-    // const updatedIncorrectTimes = cardToUpdate.incorrectTimes + 1;
-    // const shouldMoveToHardBin = updatedIncorrectTimes > 9;
-    // if (shouldMoveToHardBin) {
-    //   setHardBin((prev) => [...prev, cardToUpdate]);
-    //   timeRemaining = Infinity
-    //   newBin = -1
-    // } else {
-    //   timeRemaining = 5;
-    //   newBin = 1
-    // } const timeStamp = Math.floor(Date.now() / 1000);
 
-
-    console.log("CLICKED INCORRECT BIN")
+    // console.log("CLICKED INCORRECT BIN")
     const card = cards.find((card) => card._id === id);
     const { incorrectTimes } = card;
 
@@ -143,7 +136,6 @@ export default function UserDisplay() {
       .then((res) => res.json())
       .then((data) => {
         console.log("Update Incorrect Count Data: ", data)
-        
       })
       .catch((err) => console.error('Error in update incorrect count: ',err));
   };
@@ -155,13 +147,13 @@ export default function UserDisplay() {
 
 
   const updateBin = (id) => {
+    // console.log("CLICKED UPDATE CORRECT BIN")
     const card = cards.find((card) => card._id === id);
 
     const timeStamp = Math.floor(Date.now() / 1000);
     const nextBin = card.bin + 1;
     const cappedBin = nextBin > 11 ? 11 : nextBin;
     var timeRemaining =  binTimes[cappedBin];
-    console.log("CLICKED UPDATE CORRECT BIN")
     // console.log('Time remaining in update bin',card.timeRemaining)
   
     fetch(`/user/cards`, {
@@ -179,13 +171,9 @@ export default function UserDisplay() {
     })
       .then((res) => res.json())
       .then((data) => data)
-      .catch((err) => console.error(err));
+      .catch((err) => console.error('Error in update bin: ', err));
   };
    
-
-
-
-
 
 
   /*use effect hook to update timers on each card every second */
@@ -212,7 +200,7 @@ useEffect(() => {
         })
           .then((res) => res.json())
           .then((data) => data)
-          .catch((err) => console.error(err));
+          .catch((err) => console.error('Error in update time: ', err));
       }
   }});
   }, 1000);
@@ -228,19 +216,32 @@ useEffect(() => {
 
 
 
+  let filteredCards; 
   /* filtering cards based on conditions (no time remaining or not in final bin 11) */
-  const filteredCards = cards.filter((card) => card.timeRemaining <= 0 && card.bin < 11 && card.bin !== -1);
-  filteredCards.sort((a,b) => b.bin - a.bin)
+  if (!showCard){
+    filteredCards = cards.filter((card) => card.timeRemaining <= 0 && card.bin < 11 && card.bin !== -1);
+    filteredCards.sort((a,b) => b.bin - a.bin)
+  } else {
+    filteredCards = cards.filter((card) =>  card.bin < 11 && card.bin !== -1);
+    filteredCards.sort((a,b) => b.bin - a.bin)
+  }
   
   /* Conditional Message for User */
   let display;
    if (cards.length || hardBin.length){
     if (cards.every(el => el.bin === 11 || el.bin === -1)){
-     display = "you have no more words to review; you are permanently done!"
+     display = "You have no more words to review; you are permanently done!"
   } else if (cards.every(el => el.bin > 0 && el.timeRemaining > 0)){
      display = "You are temporarily done; please come back later to review more words."
   }} else {
      display = ""
+  }
+
+  let cardDisplay;
+  if (!showCard){
+    cardDisplay = 'Disabled'
+  } else {
+    cardDisplay = 'Enabled'
   }
 
 
@@ -248,99 +249,33 @@ useEffect(() => {
     <div>
       <CreateCard handleClick={handleChange} handleSubmit={handleFormSubmit} formData={formData} />
 
-      <h1>Welcome User </h1>
+      <h1>Welcome, Shortform Team </h1>
+      <div> 
+        <button className='display-button'> 
+          <h4 onClick = {handleDisplayCards}> Show All Cards and Remaining Time </h4>
+        </button>
+          <h4> {cardDisplay} </h4> 
+      </div>
       <h2> {display} </h2>
-      {filteredCards.map((el) => (
-        <Card
-          id={el._id}
-          key={el._id}
-          title={el.title}
-          definition={el.definition}
-          bin={el.bin}
-          timeRemaining={el.timeRemaining}
-          incorrectTimes={el.incorrectTimes}
-          known={el.known}
-          handleClick={updateIncorrectCount}
-          updateBin={updateBin}
-        />
-      ))}
+        <div className="card-container">
+        {filteredCards.map((el) => (
+          <Card
+            id={el._id}
+            key={el._id}
+            title={el.title}
+            definition={el.definition}
+            bin={el.bin}
+            timeRemaining={el.timeRemaining}
+            incorrectTimes={el.incorrectTimes}
+            known={el.known}
+            handleClick={updateIncorrectCount}
+            updateBin={updateBin}
+          />
+        ))}
+        </div> 
     </div>
   );
 }
 
 
 
-/*
-useEffect(() => {
-    const timer = setInterval(() => {
-          setCards((prevCards) => {
-          return prevCards.map((card) => {
-          const currentTime = Math.floor(Date.now() / 1000);
-          // const timeElapsed = currentTime - card.timestamp;
-          const timeElapsed = currentTime - card.timeStamp;
-          const timeRemaining =  binTimes[card.bin] - timeElapsed;
-  
-          return {
-            ...card,
-            timeRemaining,
-          };
-        });
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [cards]);
-
-
-  const updateBin = (id) => {
-    setCards((prevCards) => {
-      return prevCards.map((el) => {
-        if (el.id === id) {
-          const nextBin = el.bin + 1;
-          const cappedBin = nextBin > 11 ? 11 : nextBin;
-          if (el.bin >= 0) {
-            return {
-              ...el,
-              bin: cappedBin,
-              timeRemaining: binTimes[cappedBin],
-              timeStamp: Math.floor(Date.now() / 1000)
-            };
-          }
-        }
-        return el;
-      });
-    });
-  };
-
-
-*/
-
-
-  /*helper function that finds the card and updates incorrect count.
-  patch route */
-  // const updateIncorrectCount = (id) => {
-  //   setCards((prevCards) => {
-  //     var updatedCards = prevCards.map((card) => {
-  //       if (card._id === _id) {
-  //         if (card.incorrectTimes === 9) {
-  //           return { ...card, bin: -1 };
-  //         }
-  //         return {
-  //           ...card,
-  //           incorrectTimes: card.incorrectTimes + 1,
-  //           bin: 1,
-  //           timeStamp: Math.floor(Date.now() / 1000),
-  //         };
-  //       }
-  //       return card;
-  //     });
-  
-  //     const hardBinCards = updatedCards.filter((card) => card.bin === -1);
-  //     setHardBin((prev) => [...prev, ...hardBinCards]);
-  //     return updatedCards.filter((card) => card.bin !== -1);
-  //   });
-  // };
-
-  
