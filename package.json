@@ -1,7 +1,7 @@
 {
   "name": "space",
   "version": "1.0.0",
-  "description": "Take home assignment for Shortform hiring team.",
+  "description": "Flash card spaced repetition application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnwroge/hiring-john-wroge-flashcards.git"
+    "url": "git+https://https://github.com/johnwroge/Spaced-Recall"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/johnwroge/hiring-john-wroge-flashcards/issues"
+    "url": "https://https://github.com/johnwroge/Spaced-Recall/issues"
   },
-  "homepage": "https://github.com/johnwroge/hiring-john-wroge-flashcards#readme",
+  "homepage": "hhttps://https://github.com/johnwroge/Spaced-Recall/#readme",
   "devDependencies": {
     "@babel/cli": "^7.22.6",
     "@babel/core": "^7.22.8",
