@@ -1,13 +1,13 @@
 /* Parent component holding routes for SPA functionality*/
 
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import style from "./style.css";
 import UserDisplay from "./UserDisplay";
 
 const App = () => {
   return (
-    <Router>
+    <div>
       <div className = "App">
         <h1>
           Spaced Repetition Flashcard Application
@@ -16,7 +16,7 @@ const App = () => {
             <Route exact path="/" element={<UserDisplay />} />
         </Routes>
       </div>
-    </Router>
+    </div>
   );
 };
 

@@ -249,7 +249,7 @@ useEffect(() => {
     <div>
       <CreateCard handleClick={handleChange} handleSubmit={handleFormSubmit} formData={formData} />
 
-      <h1>Welcome, Shortform Team </h1>
+      <h1>Welcome to Spaced Recall </h1>
       <div> 
         <button className='display-button'> 
           <h4 onClick = {handleDisplayCards}> Show All Cards and Remaining Time </h4>
