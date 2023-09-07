@@ -34,7 +34,7 @@ describe('Card Component', () => {
   });
 
 
-  xit('Should call handleCorrect if got it button is clicked', () => {
+  xit('Should call handleCorrect if "got it" button is clicked', () => {
     const { getByText } = render(<Card {...mockProps} />);
     const show = screen.getByTestId('show-definition');
     fireEvent.click(show);
@@ -45,7 +45,7 @@ describe('Card Component', () => {
 
 
 
-  xit('Should call updateIncorrect if did not get it button is clicked', () => {
+  xit('Should call updateIncorrect if "did not get it" button is clicked', () => {
     const { getByText } = render(<Card {...mockProps} />);
     const show = screen.getByTestId('show-definition');
     fireEvent.click(show);
