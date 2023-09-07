@@ -35,20 +35,20 @@ export default function Card({ id, title, definition, bin, timeRemaining, incorr
   return (
     <div className="card">
       <h3>Word: {title}</h3>
-      {value && <h3>Definition: {definition}</h3>}
+      {value && <h3 data-testid="Definition">Definition: {definition}</h3>}
       <h4>Bin: {bin}</h4>
 
       <h4>Remaining Time: {time}</h4>
       <h4>Incorrect Times: {incorrectTimes}</h4>
       {
         !value && (
-      <button onClick={showMeAnswer}>Show Definition</button>
+      <button onClick={showMeAnswer} data-testid="show-definition">Show Definition</button>
         )
       }
       {value && (
         <>
-          <button disabled={buttonsDisabled} onClick={handleCorrect}>I got it</button>
-          <button disabled={buttonsDisabled} onClick={updateIncorrect}>I did not get it</button>
+          <button disabled={buttonsDisabled} onClick={handleCorrect} data-testid="Got-It">I got it</button>
+          <button disabled={buttonsDisabled} onClick={updateIncorrect} data-testid="Did-Not">I did not get it</button>
         </>
       )}
     </div>

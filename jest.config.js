@@ -4,6 +4,7 @@ from all files with js, jsx.
 */
 
 module.exports = {
+    verbose: true,
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.{js,jsx}'],
     coverageDirectory: 'coverage',

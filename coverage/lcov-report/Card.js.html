@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -125,34 +125,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,52 +178,52 @@
 &nbsp;
 import React, { useState } from 'react'
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >Card(</span>{ id, title, definition, bin, timeRemaining, incorrectTimes, handleClick, updateBin }) {
+export default function Card({ id, title, definition, bin, timeRemaining, incorrectTimes, handleClick, updateBin }) {
   /* Show definition state*/
-  const [value, setValue] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const [value, setValue] = useState(false);
   /* Disable button after clicking (instead of debounce or throttle)*/
-  const [buttonsDisabled, setButtonsDisabled] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 &nbsp;
 &nbsp;
 &nbsp;
   //Logic to show definition or not
-  const showMeAnswer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setValue(!value);</span>
+  const showMeAnswer = () =&gt; {
+    setValue(!value);
   };
 &nbsp;
   //Invokes the update incorrect bin function in UserDisplay.
-  const updateIncorrect = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const updateIncorrect = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    setButtonsDisabled(true);</span>
 <span class="cstat-no" title="statement not covered" >    handleClick(id);</span>
 &nbsp;
   };
 &nbsp;
   //Invokes the update bin function in UserDisplay
-  const handleCorrect = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const handleCorrect = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    setButtonsDisabled(true);</span>
 <span class="cstat-no" title="statement not covered" >    updateBin(id);</span>
   };
 &nbsp;
   //Changes remaining time to 0 if it's negative 
-  const time = <span class="cstat-no" title="statement not covered" >timeRemaining &lt; 0 ? 0: timeRemaining;</span>
+  const time = timeRemaining &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0:</span> timeRemaining;
   
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="card"&gt;
       &lt;h3&gt;Word: {title}&lt;/h3&gt;
-      {value &amp;&amp; &lt;h3&gt;Definition: {definition}&lt;/h3&gt;}
+      {value &amp;&amp; &lt;h3 data-testid="Definition"&gt;Definition: {definition}&lt;/h3&gt;}
       &lt;h4&gt;Bin: {bin}&lt;/h4&gt;
 &nbsp;
       &lt;h4&gt;Remaining Time: {time}&lt;/h4&gt;
       &lt;h4&gt;Incorrect Times: {incorrectTimes}&lt;/h4&gt;
       {
         !value &amp;&amp; (
-      &lt;button onClick={showMeAnswer}&gt;Show Definition&lt;/button&gt;
+      &lt;button onClick={showMeAnswer} data-testid="show-definition"&gt;Show Definition&lt;/button&gt;
         )
       }
       {value &amp;&amp; (
         &lt;&gt;
-          &lt;button disabled={buttonsDisabled} onClick={handleCorrect}&gt;I got it&lt;/button&gt;
-          &lt;button disabled={buttonsDisabled} onClick={updateIncorrect}&gt;I did not get it&lt;/button&gt;
+          &lt;button disabled={buttonsDisabled} onClick={handleCorrect} data-testid="Got-It"&gt;I got it&lt;/button&gt;
+          &lt;button disabled={buttonsDisabled} onClick={updateIncorrect} data-testid="Did-Not"&gt;I did not get it&lt;/button&gt;
         &lt;/&gt;
       )}
     &lt;/div&gt;
@@ -235,7 +235,7 @@ export default function <span class="fstat-no" title="function not covered" >Car
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-06T22:09:11.581Z
+                at 2023-09-07T15:45:58.078Z
             </div>
         <script src="prettify.js"></script>
         <script>
