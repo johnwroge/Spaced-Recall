@@ -1,4 +1,4 @@
-Repetition is the mother of all learning' - an Athenian Proverb.
+"Repetition is the mother of all learning" - an Athenian Proverb.
 
 As a lifelong learner, it can be challenging to keep track of and review all the new topics one would like to master. This project was designed to simplify this process by enabling students to store their flashcards in a database and display these cards on a timed scale dependent on how many times they have answered correctly.
 
