@@ -16,7 +16,6 @@ userController.getCards = (req, res, next) => {
 
 
   userController.createCard = async (req, res, next) => {
-    console.log('in create card');
     const { user_id, card_id, title, definition, bin, timeRemaining, timeStamp, incorrectTimes } = req.body;
     try {
       const card = await Cards.create({

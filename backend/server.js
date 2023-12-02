@@ -3,7 +3,6 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-// Heroku creates env port on deployment, otherwise use 3000 in development
 const port = process.env.PORT || 3000;
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -17,9 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
+
 app.use('/user', userRouter);
 
-//Global Error Handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
