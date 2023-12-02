@@ -4,16 +4,12 @@ const db = require('../db.js');
 const userController = {};
 
 userController.getCards = (req, res, next) => {
-  // Find cards in the database
   Cards.find({})
     .then((cards) => {
-      // Save the cards to res.locals
       res.locals.cards = cards;
-      // Move to the next middleware
       return next();
     })
     .catch((err) => {
-      // Error handling
       return next({ err });
     });
 };
@@ -42,7 +38,6 @@ userController.getCards = (req, res, next) => {
 
 
   userController.updateCard = (req, res, next) => {
-    /*  console.log(req.body.sender, req.body.title, req.body.timeRemaining)*/
   
     const { user_id, _id, timeRemaining, timeStamp, incorrectTimes, bin } = req.body;
     const updateObject = {};
@@ -62,7 +57,6 @@ userController.getCards = (req, res, next) => {
 
     Cards.findByIdAndUpdate(_id, updateObject)
       .then((item) => {
-        //res.locals.message = item;
         return next();
       })
       .catch((err) => {

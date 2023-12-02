@@ -5,12 +5,8 @@ const mongoose = require("mongoose");
 
 require('dotenv').config({ path: path.resolve(__dirname, "../.env") });
 
-
-// Import the database URI from the .env file
 const URI = process.env.MONGO_URI;
-// console.log("\u001b[1;36mmongoDB: ", URI);
 
-// Set up mongoose connection
 mongoose
   .connect(URI, 
     { 
@@ -31,6 +27,4 @@ db.on(
   "error",
   console.error.bind(console, "\u001b[1;31m MongoDB connection error:")
 );
-
-// Export db
 module.exports = db;

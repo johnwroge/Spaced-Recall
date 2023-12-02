@@ -1,4 +1,5 @@
-
+/* everything but border and border radius. for most other things
+want padding margins and others use em.  */
 
 * {
   font-family: 'Alegreya', serif;

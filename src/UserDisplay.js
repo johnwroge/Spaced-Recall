@@ -97,7 +97,8 @@ export default function UserDisplay() {
         }
       })
       .catch((error) => {
-        console.log('error in handle form submit: ',error);
+        // console error instead of log
+        console.error('error in handle form submit: ',error);
       });
     setFormData({
       title: '',
@@ -109,7 +110,6 @@ export default function UserDisplay() {
 
   const updateIncorrectCount = (id) => {
 
-    // console.log("CLICKED INCORRECT BIN")
     const card = cards.find((card) => card._id === id);
     const { incorrectTimes } = card;
 
@@ -176,7 +176,9 @@ export default function UserDisplay() {
 
 
   /*use effect hook to update timers on each card every second */
-
+// clean code means extensible, readable, 
+// make code more readable using helper function. people shouldn't stop and think what this code is doing
+// 
 
 useEffect(() => {
   const timer = setInterval(() => {
@@ -185,7 +187,7 @@ useEffect(() => {
       const currentTime = Math.floor(Date.now() / 1000);
       const timeElapsed = currentTime - card.timeStamp;
       const timeRemaining = binTimes[card.bin] - timeElapsed;
-     if (timeRemaining !== card.timeRemaining) {
+      if (timeRemaining !== card.timeRemaining) {
        
         fetch(`/user/cards`, {
           method: 'PATCH',
@@ -213,7 +215,8 @@ useEffect(() => {
 
 
 
-
+// create a helper functions makes code more readable. name of function explains what you are doing. 
+// keeps the main function flatter.
 
   let filteredCards; 
   /* filtering cards based on conditions (no time remaining or not in final bin 11) */
@@ -225,8 +228,10 @@ useEffect(() => {
     filteredCards.sort((a,b) => b.bin - a.bin)
   }
   
-  /* Conditional Message for User */
+  // /* Conditional Message for User */ format this to be cleaner
+  // instead of nest statements. Switch statment would work, or a guard clause. 
   let display;
+
    if (cards.length || hardBin.length){
     if (cards.every(el => el.bin === 11 || el.bin === -1)){
      display = "You have no more words to review; you are permanently done!"
@@ -237,12 +242,14 @@ useEffect(() => {
   }
 
   /* Conditional message to display all messages */
-  let cardDisplay;
-  if (!showCard){
-    cardDisplay = 'Disabled'
-  } else {
-    cardDisplay = 'Enabled'
-  }
+  // let cardDisplay;
+  // if (!showCard){
+  //   cardDisplay = 'Disabled'
+  // } else {
+  //   cardDisplay = 'Enabled'
+  // }
+
+  let cardDisplay = showCard ? 'Enabled': 'Disabled';
 
 
   return (
