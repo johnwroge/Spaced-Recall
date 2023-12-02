@@ -97,7 +97,6 @@ export default function UserDisplay() {
         }
       })
       .catch((error) => {
-        // console error instead of log
         console.error('error in handle form submit: ',error);
       });
     setFormData({
@@ -213,8 +212,6 @@ useEffect(() => {
 
 
 
-
-
 // create a helper functions makes code more readable. name of function explains what you are doing. 
 // keeps the main function flatter.
 
@@ -241,13 +238,6 @@ useEffect(() => {
      display = ""
   }
 
-  /* Conditional message to display all messages */
-  // let cardDisplay;
-  // if (!showCard){
-  //   cardDisplay = 'Disabled'
-  // } else {
-  //   cardDisplay = 'Enabled'
-  // }
 
   let cardDisplay = showCard ? 'Enabled': 'Disabled';
 
