@@ -11,8 +11,8 @@ export default function UserDisplay() {
   const binTimes = [0, 5, 10, 120, 600, 3600, 18000, 86400, 432000, 2160000, 10540800, Infinity];
 
   /* Cards State */
+  
   const [cards, setCards] = useState([]);
-
   /* Hard bin for items with 10 incorrect attempts */
   const [hardBin, setHardBin] = useState([])
 
