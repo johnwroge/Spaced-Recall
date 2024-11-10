@@ -42,7 +42,7 @@ export default function UserDisplay() {
     const fetchCards = () => {
       fetch('/user/cards')
         .then(res => res.json())
-        .then(data => setCards(data))
+        .then(data => setCards(data ? data : []))
         .catch(err => console.error('Error in fetch cards: ', err));
     };
   
