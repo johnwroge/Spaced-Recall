@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage=false",
     "start": "node backend/server.js",
-    "dev": "webpack --mode development && node backend/server.js",
+"dev": "concurrently \"webpack serve --mode development\" \"node backend/server.js\"",
     "build": "webpack --mode production"
   },
   "repository": {
