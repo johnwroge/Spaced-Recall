@@ -24,7 +24,7 @@ describe('App Component', () => {
             <App />
           </MemoryRouter>);
 
-    expect(screen.getByText('Spaced Repetition Flashcard Application')).toBeInTheDocument();
+    expect(screen.getByText('Spaced Recall')).toBeInTheDocument();
   });
 
   
